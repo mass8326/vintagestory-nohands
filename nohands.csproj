@@ -5,7 +5,7 @@
     <TargetGameVersion>1.18</TargetGameVersion>
     <!-- Change this in case of overriding env var to test different version  -->
     <VSPath>$(VINTAGE_STORY)</VSPath>
-    <ModVersion>0.1.0</ModVersion>
+    <ModVersion>0.1.1</ModVersion>
 	</PropertyGroup>
 	<!-- Links libraries -->
 	<ItemGroup>
