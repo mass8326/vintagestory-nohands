@@ -1,0 +1,8 @@
+# NoHands
+
+## 0.1.1
+- Remove dependency on specific game version dependency
+- Change behavior of "clear both hands" hotkey to work when main hand is empty
+
+## 0.1.0
+- Initial release
