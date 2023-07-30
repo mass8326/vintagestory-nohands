@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<!-- Sets variables -->
+	<PropertyGroup>
+		<TargetFramework>net462</TargetFramework>
+    <TargetGameVersion>1.18</TargetGameVersion>
+    <!-- Change this in case of overriding env var to test different version  -->
+    <VSPath>$(VINTAGE_STORY)</VSPath>
+    <ModVersion>0.1.0</ModVersion>
+	</PropertyGroup>
+	<!-- Links libraries -->
+	<ItemGroup>
+		<Reference Include="VintagestoryAPI">
+			<HintPath>$(VSPath)/VintagestoryAPI.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+	<!-- Common -->
+	<ItemGroup>
+		<None Include="resources/**">
+			<Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	<!-- Debug Task -->
+	<Target Name="Package" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'debug'">
+		<ZipDirectory DestinationFile="bin/Debug/$(TargetName)-$(ModVersion).zip" SourceDirectory="$(TargetDir)" Overwrite="true" />
+		<RemoveDir Directories="$(TargetDir)" />
+	</Target>
+	<!-- Release -->
+  <Target Name="PackageRelease" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'release'">
+    <ZipDirectory DestinationFile="bin/Release/$(TargetName)-$(ModVersion).zip" SourceDirectory="$(TargetDir)" Overwrite="false" />
+		<RemoveDir Directories="$(TargetDir)" />
+  </Target>
+</Project>

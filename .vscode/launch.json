@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Client (.NET)",
+      "type": "clr",
+      "request": "launch",
+      "preLaunchTask": "Build (Debug)",
+      "program": "${env:VINTAGE_STORY}/Vintagestory.exe",
+      "args": [
+        "--playStyle",
+        "surviveandbuild",
+        "--openWorld",
+        "modding-debug-world",
+        "--addModPath",
+        "${workspaceFolder}/bin/debug"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart"
+    }
+  ]
+}
