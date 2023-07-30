@@ -20,10 +20,9 @@ namespace NoHands {
       });
       Api.Input.RegisterHotKey("nohands-clear-both", Lang.Get("nohands:hotkey-clear-both"), GlKeys.R, HotkeyType.InventoryHotkeys, false, false, true);
       Api.Input.SetHotKeyHandler("nohands-clear-both", (KeyCombination keyCombination) => {
-        if (ActiveSlot != null && OffhandSlot != null)
-          return ClearSlot(ActiveSlot) && ClearSlot(OffhandSlot);
-        else
-          return false;
+        var activeSuccess = ActiveSlot != null ? ClearSlot(ActiveSlot) : false;
+        var offhandSuccess = OffhandSlot != null ? ClearSlot(OffhandSlot) : false;
+        return activeSuccess || offhandSuccess;
       });
     }
 
